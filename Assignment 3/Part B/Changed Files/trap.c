@@ -28,7 +28,7 @@ void handlePageFault(){
     //This means that the page was swapped out.
     //virtual address for page
     p->addr = addr;
-    rpush2(p);
+    cqpush2(p);
     if(!swap_in_process_exists){
       swap_in_process_exists=1;
       create_kernel_process("swap_in_process", &swap_in_process_function);

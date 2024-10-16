@@ -212,7 +212,7 @@ int cqpush(struct proc *p){
 //circular request queue for swapping in requests
 struct cir_q swap_in_queue;
 
-struct proc* rcqop2(){
+struct proc* cqpop2(){
 
 	acquire(&swap_in_queue.lock);
 	if(swap_in_queue.s==swap_in_queue.e){
@@ -326,7 +326,7 @@ void swap_in_process_function(){
 
 	acquire(&swap_in_queue.lock);
 	while(swap_in_queue.s!=swap_in_queue.e){
-		struct proc *p=rcqop2();
+		struct proc *p=cqpop2();
 
 		int pid=p->pid;
 		int virt=PTE_ADDR(p->addr);

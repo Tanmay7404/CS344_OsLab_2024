@@ -126,12 +126,12 @@ void 			swap_out_process_function();
 void 			swap_in_process_function();
 extern int swap_out_process_exists;
 extern int swap_in_process_exists;
-extern struct rq rqueue;
-extern struct rq rqueue2;
-int rpush(struct proc *p);
-struct proc* rpop();
-struct proc* rpop2();
-int rpush2(struct proc* p);
+extern struct cir_q swap_out_queue;
+extern struct cir_q swap_in_queue;
+int cqpush(struct proc *p);
+struct proc* cqpop();
+struct proc* cqpop2();
+int cqpush2(struct proc* p);
 
 // swtch.S
 void            swtch(struct context**, struct context*);
