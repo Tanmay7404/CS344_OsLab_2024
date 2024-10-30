@@ -16,7 +16,7 @@
 3. **Create a ZFS Pool:**  
    Replace `/dev/sdb` with your chosen disk:
    ```bash
-   sudo zpool create zfs_pool /dev/sdb
+   sudo dd if=/dev/zero of=/zfs_disk.img bs=1M count=5120
    ```
 4. **Enable Deduplication:**  
    ```bash
@@ -115,12 +115,12 @@
    ```bash
    ./vdbench workload2 anchor=/zfs_pool
    ```
-   Time to create files: **29 seconds**
+   Time to create files: **19 seconds**
 3. **Run on ext4:**  
    ```bash
    ./vdbench workload2 anchor=/mnt/virtual_ext4
    ```
-   Time to create files: **7 seconds**
+   Time to create files: **15 seconds**
 
 ## Conclusion  
 - **ZFS**: Efficient in saving space with **deduplication** but incurs performance overhead.  
